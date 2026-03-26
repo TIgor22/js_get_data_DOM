@@ -12,8 +12,9 @@ populationList.forEach((element) => {
   result.push(num);
 });
 
-const total = result.reduce((sum, people) => sum + people, 0);
-const average = Math.round(total / result.length);
+const nums = result.filter((num) => Number.isFinite(num));
+const total = nums.reduce((sum, people) => sum + people, 0);
+const average = nums.length ? Math.round(total / nums.length) : 0;
 const totalPopulation = document.querySelector('.total-population');
 const averagePopulation = document.querySelector('.average-population');
 const fmt = (v) => new Intl.NumberFormat('en-US').format(v);
